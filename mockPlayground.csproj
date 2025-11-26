@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.13.0" />
+    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.14.0-alpha.20251125.4" />
     <PackageReference Include="Moq" Version="4.20.72" />
   </ItemGroup>
 
