@@ -3,6 +3,7 @@ using Azure.ResourceManager;
 using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Compute.Mocking;
 using Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Compute.Skus.Mocking;
 using Azure.ResourceManager.Resources;
 using Moq;
 
@@ -18,7 +19,7 @@ namespace MockPlayground
             var subscriptionMock = new Mock<SubscriptionResource>();
 
             // 2. Create a mock for the "Mockable" resource that contains the implementation
-            var mockableSubscription = new Mock<MockableComputeSubscriptionResource>();
+            var mockableSubscription = new Mock<MockableComputeSkusSubscriptionResource>();
 
             // 3. Create the list of SKUs to return
             // Use ArmComputeModelFactory
@@ -40,7 +41,7 @@ namespace MockPlayground
                 .Returns(asyncPageable);
 
             // 6. Hook up the GetCachedClient method on the subscription mock
-            subscriptionMock.Setup(x => x.GetCachedClient(It.IsAny<Func<ArmClient, MockableComputeSubscriptionResource>>()))
+            subscriptionMock.Setup(x => x.GetCachedClient(It.IsAny<Func<ArmClient, MockableComputeSkusSubscriptionResource>>()))
                 .Returns(mockableSubscription.Object);
 
             // 7. Use the mock
